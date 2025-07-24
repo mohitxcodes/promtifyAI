@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { FaReact } from 'react-icons/fa';
-import { SiOpenai, SiTailwindcss, SiFirebase } from 'react-icons/si';
-import { FiSend } from 'react-icons/fi';
+import { SiOpenai, SiTailwindcss, SiFirebase, SiTryitonline } from 'react-icons/si';
 import { FiInfo } from 'react-icons/fi';
-import Footer from './../../../common/Footer';
-import FeaturesSection from './FeaturesSection';
-import HowItWorksSection from './HowItWorksSection';
+import { Link } from 'react-router-dom';
 
 const taglines = [
     'Ask Anything. Get Answers.',
@@ -119,13 +116,8 @@ export default function LandingPage() {
                     </h1>
                     {/* CTA Buttons */}
                     <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8">
-                        <motion.a
-                            whileHover={{
-                                scale: 1.05,
-                                boxShadow: '0 0 0 4px #6366f155, 0 4px 32px #23294633',
-                            }}
-                            whileTap={{ scale: 0.97 }}
-                            href="#get-started"
+                        <Link
+                            to="/get-started"
                             className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white text-gray-900 font-semibold shadow border border-gray-300 hover:bg-gray-100 hover:text-indigo-700 transition-all duration-200 tracking-wide text-base focus:outline-none focus:ring-2 focus:ring-indigo-400 relative overflow-hidden"
                         >
                             <motion.span
@@ -134,7 +126,7 @@ export default function LandingPage() {
                                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                                 className="flex items-center"
                             >
-                                <FiSend className="text-lg" />
+                                <SiTryitonline className='text-black' />
                             </motion.span>
                             <span>Try PromptifyAI</span>
                             {/* Glowing ring effect */}
@@ -145,7 +137,7 @@ export default function LandingPage() {
                                 transition={{ duration: 0.3 }}
                                 style={{ zIndex: 1 }}
                             />
-                        </motion.a>
+                        </Link>
                         <motion.a
                             whileHover={{
                                 scale: 1.05,
