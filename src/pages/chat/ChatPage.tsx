@@ -48,23 +48,50 @@ export default function ChatPage() {
     /* ----------------------------- Helpers ----------------------------- */
     const activeConvo = conversations.find(c => c.id === activeId);
 
-    const sendMessage = () => {
+    const sendMessage = async () => {
         if (!input.trim() || !activeConvo) return;
 
-        const updated: Conversation[] = conversations.map(c => {
-            if (c.id !== activeId) return c;
-            return {
-                ...c,
-                messages: [
-                    ...c.messages,
-                    { role: 'user', content: input },
-                    { role: 'ai', content: "I'm an AI! Here's a sample response to your prompt." },
-                ],
-            };
-        });
-        setConversations(updated);
-        persist(updated);
+        const userMessage = { role: 'user' as const, content: input };
+
+        // Add user's message immediately
+        const updatedUser = conversations.map(c =>
+            c.id === activeId
+                ? { ...c, messages: [...c.messages, userMessage] }
+                : c
+        );
+        setConversations(updatedUser);
+        persist(updatedUser);
         setInput('');
+
+        try {
+            const res = await fetch("http://localhost:3000/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ messages: [userMessage] }),
+            });
+
+            const data = await res.json();
+            const aiMessage = { role: 'ai' as const, content: data.reply || "No response from AI." };
+
+            const updatedAI = conversations.map(c =>
+                c.id === activeId
+                    ? { ...c, messages: [...c.messages, userMessage, aiMessage] }
+                    : c
+            );
+            setConversations(updatedAI);
+            persist(updatedAI);
+        } catch (error) {
+            console.error("Error calling AI API:", error);
+            const errorMessage = { role: 'ai' as const, content: "⚠️ Error: Could not get AI response." };
+
+            const updatedError = conversations.map(c =>
+                c.id === activeId
+                    ? { ...c, messages: [...c.messages, userMessage, errorMessage] }
+                    : c
+            );
+            setConversations(updatedError);
+            persist(updatedError);
+        }
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -108,7 +135,7 @@ export default function ChatPage() {
                         <span className="text-indigo-400">Hi, </span>
                         There how are you!!
                     </span>
-                    <span className="text-xs text-gray-400">Powered by OpenAI</span>
+                    <span className="text-xs text-gray-400">Powered by Groq</span>
                 </header>
 
                 {/* Chat Messages */}
