@@ -61,14 +61,15 @@ export default function ChatPage() {
         );
         setConversations(updatedUser);
         persist(updatedUser);
-        setInput('');
 
+        setInput('');
         try {
             const res = await fetch("http://localhost:3000/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ messages: [userMessage] }),
             });
+
 
             const data = await res.json();
             const aiMessage = { role: 'ai' as const, content: data.reply || "No response from AI." };

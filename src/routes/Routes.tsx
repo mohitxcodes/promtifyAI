@@ -11,7 +11,8 @@ const router = createBrowserRouter([
     {
         path: '/get-started',
         element: <ChatPage />
-    }
+    },
+
 ]);
 
 export default router;
