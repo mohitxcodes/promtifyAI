@@ -1,5 +1,6 @@
-import { FiPlus, FiMessageSquare, FiSettings } from 'react-icons/fi';
+import { FiPlus, FiMessageSquare } from 'react-icons/fi';
 import { BsStars } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 export interface Message {
     role: 'user' | 'ai';
@@ -27,12 +28,12 @@ export default function Sidebar({ conversations, activeId, onSelect, onNewChat }
 
             {/* Brand Header */}
             <div className="flex flex-col gap-4 px-5 py-6 mb-2 relative z-10">
-                <div className="flex items-center gap-3 mb-2">
+                <Link to="/" className="flex items-center gap-3 mb-2">
                     <div className="p-2 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl shadow-lg shadow-indigo-500/20">
                         <BsStars className="text-white text-lg" />
                     </div>
                     <span className="text-xl font-bold tracking-tight text-white">PromptifyAI</span>
-                </div>
+                </Link>
 
                 <button
                     onClick={onNewChat}

@@ -30,6 +30,7 @@ export default function ChatPage() {
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const chatRef = useRef<HTMLDivElement>(null);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     /* ----------------------------- Persistence ----------------------------- */
@@ -53,7 +54,6 @@ export default function ChatPage() {
         localStorage.setItem('promptify_convos', JSON.stringify(convos));
     };
 
-    /* ----------------------------- Helpers ----------------------------- */
     const activeConvo = conversations.find(c => c.id === activeId) || conversations[0];
 
     // Auto-resize textarea
@@ -114,7 +114,7 @@ export default function ChatPage() {
         }
 
         try {
-            const res = await fetch("http://localhost:3000/api/chat", {
+            const res = await fetch("https://promtifyai-backend.onrender.com/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ messages: [userMessage] }),
@@ -143,8 +143,12 @@ export default function ChatPage() {
     };
 
     useEffect(() => {
-        if (chatRef.current) {
-            chatRef.current.scrollTo({ top: chatRef.current.scrollHeight, behavior: 'smooth' });
+        if (scrollContainerRef.current) {
+            const { scrollHeight, clientHeight } = scrollContainerRef.current;
+            scrollContainerRef.current.scrollTo({
+                top: scrollHeight - clientHeight,
+                behavior: 'smooth'
+            });
         }
     }, [activeConvo?.messages, isTyping, activeId]);
 
@@ -162,7 +166,7 @@ export default function ChatPage() {
             </div>
 
             {/* Main Chat Column */}
-            <div className="flex-1 flex flex-col h-full relative min-w-0">
+            <div className="flex-1 flex flex-col h-full relative min-w-0 overflow-hidden">
                 {/* Background Decor */}
                 <div className="absolute inset-0 pointer-events-none z-0">
                     <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-[100px]" />
@@ -170,7 +174,7 @@ export default function ChatPage() {
                 </div>
 
                 {/* Header */}
-                <header className="w-full px-8 py-5 border-b border-white/5 bg-[#0a0a13]/80 flex items-center justify-between z-20 backdrop-blur-md flex-shrink-0">
+                <header className="w-full px-8 py-5 border-b border-white/5 bg-[#0a0a13]/80 flex items-center justify-between backdrop-blur-md flex-shrink-0 relative z-20">
                     <div className="flex items-center gap-3">
                         <div className="p-2 bg-indigo-500/10 rounded-lg border border-indigo-500/20">
                             <BsStars className="text-indigo-400 text-lg" />
@@ -186,7 +190,10 @@ export default function ChatPage() {
                 </header>
 
                 {/* Chat Messages - Scrollable Area */}
-                <div className="flex-1 overflow-y-auto px-4 md:px-0 py-8 relative z-10 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent">
+                <div
+                    ref={scrollContainerRef}
+                    className="flex-1 overflow-y-auto px-4 md:px-0 py-8 relative z-10 scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
+                >
                     <div className="max-w-3xl mx-auto flex flex-col gap-6 pb-4">
                         <AnimatePresence initial={false}>
                             {activeConvo?.messages.map((msg, idx) => (
