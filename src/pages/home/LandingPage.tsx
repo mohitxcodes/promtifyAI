@@ -138,25 +138,6 @@ export default function LandingPage() {
                                 style={{ zIndex: 1 }}
                             />
                         </Link>
-                        <motion.a
-                            whileHover={{
-                                scale: 1.05,
-                                borderColor: '#6366f1',
-                                color: '#6366f1',
-                            }}
-                            whileTap={{ scale: 0.97 }}
-                            href="#how"
-                            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white text-gray-900 font-semibold border-2 border-gray-900 hover:bg-gray-100 hover:text-indigo-700 transition-all duration-200 tracking-wide text-base focus:outline-none focus:ring-2 focus:ring-gray-500"
-                        >
-                            <motion.span
-                                whileHover={{ y: -3 }}
-                                transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                                className="flex items-center"
-                            >
-                                <FiInfo className="text-lg" />
-                            </motion.span>
-                            <span>How It Works</span>
-                        </motion.a>
                     </div>
                     {/* Example Questions & Error Handling Note */}
                     <div className="flex flex-col items-center gap-4 mt-8">
