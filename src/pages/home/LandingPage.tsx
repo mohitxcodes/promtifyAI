@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { FaReact } from 'react-icons/fa';
-import { SiOpenai, SiTailwindcss, SiFirebase, SiTryitonline } from 'react-icons/si';
-import { FiInfo } from 'react-icons/fi';
+import { FaReact, FaRobot } from 'react-icons/fa';
+import { SiTailwindcss, SiFirebase, } from 'react-icons/si';
 import { Link } from 'react-router-dom';
+import { GoArrowRight } from 'react-icons/go';
 
 const taglines = [
     'Ask Anything. Get Answers.',
@@ -118,25 +118,12 @@ export default function LandingPage() {
                     <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8">
                         <Link
                             to="/get-started"
-                            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white text-gray-900 font-semibold shadow border border-gray-300 hover:bg-gray-100 hover:text-indigo-700 transition-all duration-200 tracking-wide text-base focus:outline-none focus:ring-2 focus:ring-indigo-400 relative overflow-hidden"
+                            className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-gray-100 via-white to-gray-100 bg-[length:200%_auto] hover:bg-right transition-all duration-500 text-gray-900 font-bold shadow-xl shadow-white/10 hover:shadow-white/20 hover:-translate-y-1 text-lg border border-white/50"
                         >
-                            <motion.span
-                                initial={{ x: -12, opacity: 0 }}
-                                whileHover={{ x: 0, opacity: 1 }}
-                                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                                className="flex items-center"
-                            >
-                                <SiTryitonline className='text-black' />
-                            </motion.span>
+                            <GoArrowRight className='text-gray-900 text-xl group-hover:rotate-12 transition-transform duration-300' />
                             <span>Try PromptifyAI</span>
-                            {/* Glowing ring effect */}
-                            <motion.span
-                                className="absolute inset-0 rounded-full pointer-events-none"
-                                initial={{ opacity: 0 }}
-                                whileHover={{ opacity: 0.25, boxShadow: '0 0 0 8px #6366f1' }}
-                                transition={{ duration: 0.3 }}
-                                style={{ zIndex: 1 }}
-                            />
+                            {/* Inner glow */}
+                            <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-black/5 group-hover:ring-black/10 transition-all" />
                         </Link>
                     </div>
                     {/* Example Questions & Error Handling Note */}
@@ -153,7 +140,7 @@ export default function LandingPage() {
                             <span className="text-base font-semibold text-gray-300 mb-3 ">Tech Stacks</span>
                             <div className="flex flex-wrap items-center justify-center gap-10 text-2xl  font-bold text-gray-200">
                                 <span className="flex items-center gap-3"><FaReact className="text-gray-200 text-3xl" /> ReactJS</span>
-                                <span className="flex items-center gap-3"><SiOpenai className="text-gray-200 text-3xl" /> OpenAI</span>
+                                <span className="flex items-center gap-3"><FaRobot className="text-gray-200 text-3xl" /> Grok API</span>
                                 <span className="flex items-center gap-3"><SiTailwindcss className="text-gray-200 text-3xl" /> Tailwind CSS</span>
                                 <span className="flex items-center gap-3"><SiFirebase className="text-gray-200 text-3xl" /> Firebase</span>
                             </div>
