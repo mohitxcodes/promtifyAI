@@ -9,8 +9,8 @@ const FeaturesSection = () => (
                 className="bg-white/5 border border-indigo-900 rounded-2xl p-8 flex flex-col items-center shadow-lg transition"
             >
                 <svg width="36" height="36" fill="none" viewBox="0 0 36 36" className="mb-4"><rect x="4" y="4" width="28" height="28" rx="8" fill="#fff" fillOpacity="0.04" /><path d="M18 10v8l6 3" stroke="#a5b4fc" strokeWidth="2.5" strokeLinecap="round" /></svg>
-                <h3 className="text-xl font-semibold mb-2 text-white">AI-Powered Answers</h3>
-                <p className="text-gray-200 text-center">Get instant, accurate responses to any question, powered by advanced AI.</p>
+                <h3 className="text-xl font-semibold mb-2 text-white">Smart Answers</h3>
+                <p className="text-gray-200 text-center">Get instant, accurate responses to any question, powered by advanced technology.</p>
             </motion.div>
             <motion.div
                 whileHover={{ y: -8, boxShadow: '0 8px 32px #222' }}

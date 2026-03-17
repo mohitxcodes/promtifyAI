@@ -32,7 +32,7 @@ export default function Sidebar({ conversations, activeId, onSelect, onNewChat }
                     <div className="p-2 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl shadow-lg shadow-indigo-500/20">
                         <BsStars className="text-white text-lg" />
                     </div>
-                    <span className="text-xl font-bold tracking-tight text-white">PromptifyAI</span>
+                    <span className="text-xl font-bold tracking-tight text-white">Promptify</span>
                 </Link>
 
                 <button

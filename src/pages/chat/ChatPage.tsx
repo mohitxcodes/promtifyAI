@@ -21,7 +21,7 @@ interface Conversation {
 }
 
 const initialMessages: Message[] = [
-    { role: 'ai', content: 'Hi! I am PromptifyAI. How can I help you today?' },
+    { role: 'ai', content: 'Hi! I am Promptify. How can I help you today?' },
 ];
 
 export default function ChatPage() {
@@ -127,8 +127,8 @@ export default function ChatPage() {
 
             updateConversationMessages(activeId, [...newMessages, aiMessage]);
         } catch (error) {
-            console.error("Error calling AI API:", error);
-            const errorMessage: Message = { role: 'ai', content: "⚠️ System Error: Unable to reach the AI. Please try again later." };
+            console.error("Error calling API:", error);
+            const errorMessage: Message = { role: 'ai', content: "⚠️ System Error: Unable to reach the server. Please try again later." };
             updateConversationMessages(activeId, [...newMessages, errorMessage]);
         } finally {
             setIsTyping(false);
@@ -180,7 +180,7 @@ export default function ChatPage() {
                             <BsStars className="text-indigo-400 text-lg" />
                         </div>
                         <div>
-                            <h2 className="text-sm font-bold text-white tracking-wide">Promptify AI</h2>
+                            <h2 className="text-sm font-bold text-white tracking-wide">Promptify</h2>
                             <p className="text-xs text-indigo-300 font-medium">Always ready to help</p>
                         </div>
                     </div>
@@ -307,7 +307,7 @@ export default function ChatPage() {
                                 value={input}
                                 onChange={e => setInput(e.target.value)}
                                 onKeyDown={handleKeyDown}
-                                placeholder="Message PromptifyAI..."
+                                placeholder="Message Promptify..."
                                 rows={1}
                                 className="flex-1 max-h-32 px-4 py-3 bg-transparent text-gray-100 placeholder-gray-500 focus:outline-none resize-none scrollbar-hide text-base leading-6"
                             />
@@ -321,7 +321,7 @@ export default function ChatPage() {
                         </div>
                     </form>
                     <p className="text-center text-[10px] text-gray-600 mt-3 font-mono">
-                        PromptifyAI makes mistakes. Double-check important info.
+                        Promptify makes mistakes. Double-check important info.
                     </p>
                 </div>
             </div>

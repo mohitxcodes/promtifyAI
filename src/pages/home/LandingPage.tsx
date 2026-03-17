@@ -7,8 +7,8 @@ import { GoArrowRight } from 'react-icons/go';
 
 const taglines = [
     'Ask Anything. Get Answers.',
-    'Powered by OpenAI API.',
-    'Instant, Reliable AI Help.',
+    'Powered by Advanced Tech.',
+    'Instant, Reliable Help.',
     'Solve Problems, Learn Fast.'
 ];
 
@@ -44,7 +44,7 @@ const exampleQuestions = [
     'What is the capital of France?',
     'Explain quantum computing in simple terms.',
     'How can I improve my productivity?',
-    'What are the latest trends in AI?'
+    'What are the latest trends in technology?'
 ];
 
 export default function LandingPage() {
@@ -85,7 +85,7 @@ export default function LandingPage() {
                 </div>
                 {/* Subtle noise overlay */}
                 <div className="absolute inset-0 w-full h-full pointer-events-none" style={{ background: 'url(https://www.transparenttextures.com/patterns/asfalt-light.png)', opacity: 0.12, zIndex: 1 }} />
-                {/* Floating AI Icon */}
+                {/* Floating Icon */}
                 <motion.div animate={aiIconControls} className="absolute left-8 top-8 z-20 hidden md:block">
                     <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-full p-4 shadow-2xl border border-gray-700">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,9 +108,9 @@ export default function LandingPage() {
                         <span className="text-xs md:text-sm font-mono text-gray-300 bg-gray-900/60 px-6 py-0.5 rounded-full border border-gray-700 shadow-inner inline-block min-w-[100px]">{typewriter}</span>
                     </div>
                     <h1 className="text-5xl md:text-5xl font-extrabold mb-6 leading-tight text-white drop-shadow-xl tracking-tight">
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100">PromptifyAI: Your AI Q&A Copilot</span>
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-gray-300 to-gray-100">Promptify: Your Q&A Copilot</span>
                         <span className="block  text-base md:text-lg font-normal mt-4 text-gray-400 tracking-wide">
-                            Instantly get answers, explanations, and insights from advanced AI.<br />
+                            Instantly get answers, explanations, and insights.<br />
                             No signup, no hassle—just ask and explore.
                         </span>
                     </h1>
@@ -121,7 +121,7 @@ export default function LandingPage() {
                             className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-gray-100 via-white to-gray-100 bg-[length:200%_auto] hover:bg-right transition-all duration-500 text-gray-900 font-bold shadow-xl shadow-white/10 hover:shadow-white/20 hover:-translate-y-1 text-lg border border-white/50"
                         >
                             <GoArrowRight className='text-gray-900 text-xl group-hover:rotate-12 transition-transform duration-300' />
-                            <span>Try PromptifyAI</span>
+                            <span>Try Promptify</span>
                             {/* Inner glow */}
                             <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-black/5 group-hover:ring-black/10 transition-all" />
                         </Link>
