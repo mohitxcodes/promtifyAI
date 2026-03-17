@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const Header = () => (
     <header className="w-full px-8 py-6 flex items-center justify-between border-b border-gray-900 bg-black/80 sticky top-0 z-30">
-        <div className="text-2xl font-bold tracking-tight">promptify<span className="text-indigo-400">AI</span></div>
+        <div className="text-2xl font-bold tracking-tight">promptify</div>
         <nav className="hidden md:flex gap-8 text-gray-300 text-base">
             <a href="#features" className="hover:text-white transition">Features</a>
             <a href="#how" className="hover:text-white transition">How it Works</a>
